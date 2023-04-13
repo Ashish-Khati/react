@@ -6,6 +6,9 @@
     flex-wrap: wrap;
 }
 
+body {
+    background-color: #000000;
+}
 
 .starty {
     margin-left: 35rem;
