@@ -109,6 +109,16 @@ h3 {
     margin-top: 1rem;
 
 }
+.ciphermap-div{
+    width:74.5rem;
+   
+}
+.ciphermap-hr {
+    width: 74.5rem;
+    margin-left: 3rem;
+    margin-top: 1rem;
+
+}
 
 .l {
     display: flex;

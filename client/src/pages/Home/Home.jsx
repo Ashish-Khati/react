@@ -16,6 +16,7 @@ import axios from "axios";
 import { useLocation } from 'react-router-dom';
 import { Route, Link, Routes, useParams } from 'react-router-dom';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import CipherMap from '../../component/CipherMap/CipherMap';
 const Home = () => {
     let [buttonText, setButtonText] = useState('Edit')
     let [buttonText1, setButtonText1] = useState('Edit')
@@ -189,6 +190,10 @@ const Home = () => {
                                 <hr size="0.5" />
                             </div>
 
+                               <div className="ciphermap-div">
+                               <CipherMap/>
+                               </div>
+                               <hr className='ciphermap-hr' size="0.5" />
 
 
                             <div className="left3">
