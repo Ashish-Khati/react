@@ -5,15 +5,19 @@ const personSchema = new Schema({
     fname: { type: String, required: true },
     lname: { type: String, required: true },
     password: { type: String, required: true },
+    aboutme: { type: String, default: 'Add something about you.' },
     phone: { type: String },
-    linkedin: { type: String },
-    github: { type: String },
-    facebook: { type: String },
-    twitter: { type: String },
-    instagram: { type: String },
-    website: { type: String },
+    linkedin: { type: String, default: 'Linkedin' },
+    github: { type: String, default: 'Github' },
+    facebook: { type: String, default: 'Facebook' },
+    twitter: { type: String, default: 'Twitter' },
+    instagram: { type: String, default: 'Instagram' },
+    website: { type: String, default: 'Website' },
     image: { type: String },
-    follower: { type: String },
+    follower: {
+        type: String,
+        default: "0"
+    },
     highesteducation: { type: String },
     whatdoudocurrently: { type: String }
 });

@@ -27,20 +27,25 @@ const Home = () => {
     let [displayValue3, setIsDisplay3] = useState('none')
     let [displayValue4, setIsDisplay4] = useState('none')
     let [image, setimage] = useState("")
+    const [credentials5, setCredentials5] = useState({
+        aboutme: undefined
 
+    })
+    const handleChange5 = (e) => {
+        setCredentials5(prev => ({ ...prev, [e.target.id]: e.target.value }))
+    }
     const params = useParams();
 
     console.log(params);
 
     // console.log(result.data.fname);
 
-    // const myFunction = async () => {
-    //     const result = await axios.get(`/find/${params.id}`);
-    //     // console.log(result.data);
-    //     fillpersondata(result.data)
-    // }
+    const myFunction = async () => {
+        const result = await axios.post(`http://localhost:8080/update/${params.id}`, credentials5);
 
-    // myFunction();
+    }
+
+
 
     const location = useLocation();
 
@@ -95,7 +100,8 @@ const Home = () => {
     const saviourBtn = (e) => {
         setColor(e.target.value);
     }
-    const changeText = () => {
+    const changeText = (e) => {
+        e.preventDefault()
         if (buttonText === 'Edit') {
             setButtonText('Save');
             setIsDisable(!disableValue)
@@ -105,9 +111,12 @@ const Home = () => {
         else {
             setButtonText('Edit');
             setIsDisable(!disableValue)
+            myFunction()
+
         }
     }
-    const changeText1 = () => {
+    const changeText1 = (e) => {
+        e.preventDefault()
         if (buttonText1 === 'Edit') {
             setButtonText1('Save');
             setIsDisable1(!disableValue1)
@@ -149,8 +158,8 @@ const Home = () => {
 
                             <div className='details'>
                                 <h2>Hello,</h2>
-                                <h1>{location.state.fname} Sati</h1>
-                                <h3>satidevang2001@gmail.com</h3>
+                                <h1>{location.state.fname} {location.state.lname}</h1>
+                                <h3>{location.state.email}</h3>
                                 <input type="file" id="file" onChange={ConvertToBase64} style={{ display: "none" }} />
                             </div>
 
@@ -170,8 +179,10 @@ const Home = () => {
                                     <textarea className='txt'
                                         rows={9}
                                         cols={160}
-                                        placeholder='Add something about you.'
+                                        id="aboutme"
+                                        placeholder={location.state.aboutme}
                                         disabled={disableValue}
+                                        onChange={handleChange5}
                                     />
                                 </div>
 
@@ -192,7 +203,7 @@ const Home = () => {
                                             <div className="iconic">
 
                                                 <i class="fa-brands fa-linkedin fav"></i>
-                                                <input type="text" id="f1" placeholder="Linkedin" disabled={disableValue2} />
+                                                <input type="text" id="f1" placeholder={location.state.linkedin} disabled={disableValue2} />
                                             </div>
 
                                         </div>
@@ -201,14 +212,14 @@ const Home = () => {
 
                                             <div className="iconic">
                                                 <FacebookRoundedIcon className='face' />
-                                                <input type="text" id="f3" placeholder="Facebook" disabled={disableValue2} />
+                                                <input type="text" id="f3" placeholder={location.state.facebook} disabled={disableValue2} />
                                             </div>
                                         </div>
                                         <div className="instagram">
                                             <h4>Instagram</h4>
                                             <div className="iconic">
                                                 <i class="fa-brands fa-instagram fav"></i>
-                                                <input type="text" id="f3" placeholder="Instagram" disabled={disableValue2} />
+                                                <input type="text" id="f3" placeholder={location.state.instagram} disabled={disableValue2} />
                                             </div>
                                         </div>
                                     </div>
@@ -219,14 +230,14 @@ const Home = () => {
                                             <div className="iconic">
                                                 <GitHubIcon className='face' />
 
-                                                <input type="text" id="f4" placeholder="Github" disabled={disableValue2} />
+                                                <input type="text" id="f4" placeholder={location.state.github} disabled={disableValue2} />
                                             </div>
                                         </div>
                                         <div className="twitter">
                                             <h4>Twitter</h4>
                                             <div className="iconic">
                                                 <i class="fa-brands fa-square-twitter fav"></i>
-                                                <input type="text" id="f5" placeholder="Twitter" disabled={disableValue2} />
+                                                <input type="text" id="f5" placeholder={location.state.twitter} disabled={disableValue2} />
                                             </div>
                                         </div>
                                         <div className="website">
@@ -234,7 +245,7 @@ const Home = () => {
                                             <div className="iconic">
                                                 <LanguageOutlinedIcon className='face' />
 
-                                                <input type="text" id="f6" placeholder="Website" disabled={disableValue2} />
+                                                <input type="text" id="f6" placeholder={location.state.website} disabled={disableValue2} />
                                             </div>
                                         </div>
                                     </div>

@@ -45,17 +45,17 @@ const Front = () => {
         e.preventDefault()
         try {
             // console.log(55);
-            console.log(credentials);
-            const result = await axios.post("/verify", credentials);
-            console.log(result);
+            // console.log(credentials);
+            const result = await axios.post("http://localhost:8080/verify", credentials);
+            // console.log(result);
             if (result.data === 0)
                 setIsDisplay8('block')
             else {
                 setIsDisplay8('none')
-                const res = await axios.post("/form", credentials);
-                console.log(res.data);
+                const result = await axios.post("http://localhost:8080/form", credentials);
+                console.log(result.data);
 
-                navigate(`/profile/${result.data._id}`, { state: { fname: result.data.fname, lname: result.data.lname, email: result.data.email, password: result.data.password, phone: result.data.phone, linkedin: result.data.linkedin, github: result.data.github, facebook: result.data.facebook, twitter: result.data.twitter, instagram: result.data.instagram, website: result.data.website, image: result.data.image, follower: result.data.follower, highesteducation: result.data.highesteducation, whatdoudocurrently: result.data.whatdoudocurrently } })
+                navigate(`/profile/${result.data._id}`, { state: { aboutme: result.data.aboutme, fname: result.data.fname, lname: result.data.lname, email: result.data.email, password: result.data.password, phone: result.data.phone, linkedin: result.data.linkedin, github: result.data.github, facebook: result.data.facebook, twitter: result.data.twitter, instagram: result.data.instagram, website: result.data.website, image: result.data.image, follower: result.data.follower, highesteducation: result.data.highesteducation, whatdoudocurrently: result.data.whatdoudocurrently } })
 
             }
         }
@@ -70,14 +70,14 @@ const Front = () => {
         e.preventDefault()
         try {
             // console.log(55);
-            console.log(credentials);
-            const result = await axios.post("/signin", credentials1);
+            console.log(credentials1);
+            const result = await axios.post("http://localhost:8080/signin", credentials1);
             console.log(result);
             if (result.data === 0)
                 setIsDisplay7('block')
             else {
 
-                navigate(`/profile/${result.data._id}`, { state: { fname: result.data.fname, lname: result.data.lname, email: result.data.email, password: result.data.password, phone: result.data.phone, linkedin: result.data.linkedin, github: result.data.github, facebook: result.data.facebook, twitter: result.data.twitter, instagram: result.data.instagram, website: result.data.website, image: result.data.image, follower: result.data.follower, highesteducation: result.data.highesteducation, whatdoudocurrently: result.data.whatdoudocurrently } })
+                navigate(`/profile/${result.data._id}`, { state: { aboutme: result.data.aboutme, fname: result.data.fname, lname: result.data.lname, email: result.data.email, password: result.data.password, phone: result.data.phone, linkedin: result.data.linkedin, github: result.data.github, facebook: result.data.facebook, twitter: result.data.twitter, instagram: result.data.instagram, website: result.data.website, image: result.data.image, follower: result.data.follower, highesteducation: result.data.highesteducation, whatdoudocurrently: result.data.whatdoudocurrently } })
                 setIsDisplay7('none')
                 console.log(result.data._id);
 

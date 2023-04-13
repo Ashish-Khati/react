@@ -6,6 +6,7 @@
     flex-wrap: wrap;
 }
 
+
 body {
     background-color: #000000;
 }
@@ -26,7 +27,7 @@ body {
     border-radius: 3px;
     padding: 3rem;
     width: 90%;
-    margin-top: 1rem;
+    margin-top: 3rem;
     flex-wrap: wrap;
 
 }

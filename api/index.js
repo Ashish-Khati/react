@@ -90,7 +90,7 @@ app.post("/signin", async (req, res, next) => {
 })
 
 
-app.get("/find/:id", async (req, res, next) => {
+app.post("/find/:id", async (req, res, next) => {
 
     try {
         console.log(req.params.id);
@@ -102,6 +102,20 @@ app.get("/find/:id", async (req, res, next) => {
     } catch (err) {
         return next(err); //need to use return
     }
+})
+
+
+
+app.post("/update/:id", async (req, res, next) => {
+    try {
+
+        const updateperson = await Car.findByIdAndUpdate(req.params.id, { $set: { ...req.body } }, { new: true });
+        console.log(updateperson);
+        res.status(200).json(4)
+    } catch (err) {
+        return next(err);
+    }
+
 })
 
 
